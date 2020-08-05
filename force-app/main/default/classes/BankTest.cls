@@ -1,8 +1,3 @@
-// public with sharing class BankTest {
-//     public BankTest() {
-
-//     }
-// }
 @isTest
 public class BankTest extends bank {
     @isTest static void TestDeposit(){

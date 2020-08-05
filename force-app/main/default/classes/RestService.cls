@@ -3,11 +3,12 @@ global with sharing class RestService {
     @HttpGet
     global static contact getContact(){
         RestRequest request = RestContext.request;
-        String contactId = request.requestURI.substring(request.requestURI.lastIndexOf('/')+1);
+        String contactId = request.requestURI.substring(
+          request.requestURI.lastIndexOf('/')+1);
         Contact result =  [SELECT id,name,phone,email FROM contact WHERE Id = :contactId];
         return result;
     }
-    @HttpPut
+    @httpPut
     global static ID updateContactPhone() {
         RestRequest request = RestContext.request;
         String ContactId = request.requestURI.substring(
@@ -16,7 +17,7 @@ global with sharing class RestService {
         Map<String, Object> params = (Map<String, Object>)JSON.deserializeUntyped(request.requestbody.tostring());        
         for(String fieldName : params.keySet()) {
             if(fieldName.toLowerCase()=='phone'){
-                ct.put(fieldName, params.get(fieldName)); 
+               ct.put(fieldName, params.get(fieldName)); 
             }  
         }
         
